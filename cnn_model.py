@@ -11,10 +11,10 @@ from tensorflow.keras.layers import (
 
 from sklearn.model_selection import train_test_split
 
-from hello import load_dataset
+from dataset_loader import load_dataset
 
 
-# Load ECG dataset
+
 X, y = load_dataset()
 
 print("Original Shape:", X.shape)
@@ -24,7 +24,7 @@ X = X.reshape(X.shape[0], X.shape[1], 1)
 
 print("CNN Shape:", X.shape)
 
-# Train-Test Split
+
 X_train, X_test, y_train, y_test = train_test_split(
     X,
     y,
@@ -63,17 +63,16 @@ model = Sequential([
     Dense(1, activation='sigmoid')
 ])
 
-# Configure Training
+
 model.compile(
     optimizer='adam',
     loss='binary_crossentropy',
     metrics=['accuracy']
 )
 
-# Show Architecture
+
 model.summary()
 
-# Train Model
 history = model.fit(
     X_train,
     y_train,
@@ -82,7 +81,7 @@ history = model.fit(
     validation_data=(X_test, y_test)
 )
 
-# Evaluate
+
 loss, accuracy = model.evaluate(
     X_test,
     y_test

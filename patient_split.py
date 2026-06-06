@@ -1,7 +1,7 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 
-from hello import load_record
+from dataset_loader import load_record
 
 X100, y100 = load_record("100")
 X101, y101 = load_record("101")
