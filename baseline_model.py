@@ -2,7 +2,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
-from hello import load_dataset
+from dataset_loader import load_dataset
 
 X, y = load_dataset()
 

@@ -1,6 +1,12 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
+from sklearn.metrics import (
+    classification_report,
+    confusion_matrix,
+    ConfusionMatrixDisplay
+)
 
+import matplotlib.pyplot as plt
 from dataset_loader import load_record
 
 X100, y100 = load_record("100")
@@ -31,3 +37,17 @@ model.fit(X_train, y_train)
 pred = model.predict(X_test)
 
 print(classification_report(y_test, pred))
+cm = confusion_matrix(y_test, pred)
+
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=cm,
+    display_labels=["Normal", "Abnormal"]
+)
+
+disp.plot()
+
+plt.title("Patient-wise Confusion Matrix")
+
+plt.savefig("confusion_matrix.png")
+
+plt.show()
